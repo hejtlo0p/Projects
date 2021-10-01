@@ -5,31 +5,36 @@
 
 #include "linkedList.h"
 
-linked_list::linked_list() {
+template <typename T>
+linked_list<T>::linked_list() {
 	this->head = nullptr;
 	this->tail = nullptr;
 }
 
-linked_list::linked_list(const linked_list& src) {
+template <typename T>
+linked_list<T>::linked_list(const linked_list& src) {
 	this->head = nullptr;
 	this->tail = nullptr;
 	*this = src; // Copies the list with help of overloaded "="-operator.
 }
 
 // Destructor of class, removes each list from the heap.
-linked_list::~linked_list() {
+template <typename T>
+linked_list<T>::~linked_list() {
 	while (!this->is_empty()) {
 		this->pop_front();
 	}
 }
 
-linked_list::node::node(double value) {
+template <typename T>
+linked_list<T>::node::node(T value) {
 	this->value = value;
 	this->next = nullptr;
 	this->prev = nullptr;
 }
 
-linked_list& linked_list::operator= (const linked_list &rhs) {
+template <typename T>
+linked_list<T>& linked_list<T>::operator= (const linked_list<T> &rhs) {
 	if (this != &rhs) {
 		// Clean old data
 		while (!this->is_empty()) {
@@ -48,7 +53,8 @@ linked_list& linked_list::operator= (const linked_list &rhs) {
 	return *this;
 }
 
-linked_list& linked_list::operator+= (const linked_list& rhs) {
+template <typename T>
+linked_list<T>& linked_list<T>::operator+= (const linked_list<T>& rhs) {
 	if (this->is_empty()) {
 		*this = rhs;
 	}
@@ -64,10 +70,13 @@ linked_list& linked_list::operator+= (const linked_list& rhs) {
 }
 
 // Status
-std::size_t linked_list::size() const noexcept {
+template <typename T>
+std::size_t linked_list<T>::size() const noexcept {
 	return this->m_size;
 }
 
-bool linked_list::is_empty() const {
+template <typename T>
+bool linked_list<T>::is_empty() const {
 	return this->m_size == 0 ? true : false;
 }
+

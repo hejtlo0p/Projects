@@ -6,7 +6,8 @@
 #include "linkedList.h"
 
 // Prints the list
-void linked_list::print() const {
+template <typename T>
+void  linked_list<T>::print() const {
 	node* n = head;
 	for (n; n != nullptr ; n = n->next) {
 		if (n->next == nullptr) {
@@ -21,7 +22,8 @@ void linked_list::print() const {
 }
 
 // Prints the list reversed
-void linked_list::print_reverse() const {
+template <typename T>
+void linked_list<T>::print_reverse() const {
 	node* n = tail;
 	for (n; n != nullptr; n = n->prev) {
 		if (n->prev == nullptr) {
@@ -35,7 +37,8 @@ void linked_list::print_reverse() const {
 	std::cout << "------------------" << std::endl;
 }
 
-double linked_list::front() const {
+template <typename T>
+T linked_list<T>::front() const {
 	try {
 		if (is_empty()) {
 			throw std::invalid_argument("List is empty!");
@@ -47,7 +50,8 @@ double linked_list::front() const {
 	}
 }
 
-double linked_list::back() const {
+template <typename T>
+T linked_list<T>::back() const {
 	try {
 		if (is_empty()) {
 			throw std::invalid_argument("List is empty!");
@@ -60,7 +64,8 @@ double linked_list::back() const {
 }
 
 // Returns the value of node at pos. Starting at 0 and ends at list.size()-1.
-double linked_list::at(std::size_t pos) const {
+template <typename T>
+T linked_list<T>::at(std::size_t pos) const {
 	try {
 		if (is_empty()) {
 			throw std::invalid_argument("List is empty!");
@@ -86,7 +91,8 @@ double linked_list::at(std::size_t pos) const {
 	}
 }
 
-void linked_list::exceptionHandle(std::exception& e) const {
+template <typename T>
+void linked_list<T>::exceptionHandle(std::exception& e) const {
 	std::cerr << "Exception: " << e.what() << std::endl;
 	exit(EXIT_FAILURE);
 }

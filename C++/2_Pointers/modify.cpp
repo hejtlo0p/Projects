@@ -11,7 +11,8 @@
 *	When pos == list.size() this function works like push_back()
 *	When pos == 0 this function works like push_front()
 */
-void linked_list::insert(double value, std::size_t pos) {
+template <typename T>
+void linked_list<T>::insert(T value, std::size_t pos) {
 	node* n = new node(value);
 	try {
 		if (pos > m_size) {
@@ -42,7 +43,8 @@ void linked_list::insert(double value, std::size_t pos) {
 }
 
 // Adds an element in the last place of list.
-void linked_list::push_back(double value) {
+template <typename T>
+void linked_list<T>::push_back(T value) {
 	node* n = new node(value);
 	
 	if (!is_empty()) {
@@ -58,7 +60,8 @@ void linked_list::push_back(double value) {
 }
 
 // Adds an element in the first place of list.
-void linked_list::push_front(double value) {
+template <typename T>
+void linked_list<T>::push_front(T value) {
 	node* n = new node(value);
 	
 	if (!is_empty()) {
@@ -75,7 +78,8 @@ void linked_list::push_front(double value) {
 
 // ***** Deleting Elements *****
 // Removes the element in list of position pos. first element is 0 and last element is list.size()-1
-void linked_list::remove(std::size_t pos) {
+template <typename T>
+void linked_list<T>::remove(std::size_t pos) {
 	try {
 		if (is_empty()) {
 			throw std::invalid_argument("List is empty!");
@@ -113,11 +117,12 @@ void linked_list::remove(std::size_t pos) {
 }
 
 // Removes the first element of list.
-double linked_list::pop_front() {
+template <typename T>
+T linked_list<T>::pop_front() {
 	try {
 		if (!is_empty()) {
 			node* n = head;
-			double value = n->value;
+			T value = n->value;
 			if (m_size == 1) {
 				delete n;
 				head = nullptr;
@@ -142,7 +147,8 @@ double linked_list::pop_front() {
 }
 
 // Removes the last element of list.
-double linked_list::pop_back() {
+template <typename T>
+T linked_list<T>::pop_back() {
 	try {
 		if (!is_empty()) {
 			node* n = tail;

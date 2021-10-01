@@ -3,33 +3,33 @@
 
 #include <iostream>
 
-//template<typename T>
+template<typename T = double>
 class linked_list {
 public:
-	linked_list();
-	linked_list(const linked_list &src);
+	linked_list<T>();
+	linked_list<T>(const linked_list &src);
 
-	~linked_list();
+	~linked_list<T>();
 
-	linked_list& operator= (const linked_list& rhs);
+	linked_list<T>& operator= (const linked_list<T>& rhs);
 
 	// Appends elements from rhs
-	linked_list& operator+= (const linked_list& rhs);
+	linked_list<T>& operator+= (const linked_list<T>& rhs);
 
 	//	Inserting elements
-	void insert(double value, std::size_t pos);
-	void push_back(double value);
-	void push_front(double value);
+	void insert(T value, std::size_t pos);
+	void push_back(T value);
+	void push_front(T value);
 
 	//	Accessing elements
-	double front() const;
-	double back() const;
-	double at(std::size_t pos) const;
+	T front() const;
+	T back() const;
+	T at(std::size_t pos) const;
 
 	//	Removing elements
 	void remove(std::size_t pos);
-	double pop_front();
-	double pop_back();
+	T pop_front();
+	T pop_back();
 
 	//	Status
 	std::size_t size() const noexcept;
@@ -42,8 +42,8 @@ public:
 
 private:
 	struct node {
-		node(double value);
-		double value;
+		node(T value);
+		T value;
 		node* prev;
 		node* next;
 	};
@@ -51,6 +51,7 @@ private:
 	node* tail;
 	std::size_t m_size = 0;
 };
+
 
 #endif
 
